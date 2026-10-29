@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Victory Foods – Good food. Less wahala.</title>
+<meta name="description" content="Groceries, errands and keke rides for your neighbourhood. Send your list and we bring it to your door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FFF8EC;--sand:#F5F0E4;--yellow:#F3D77A;--green:#24392B;--red:#D6432A;--ink:#1d2a22;--mute:#6b6f66;--line:#e6dfcd}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.1}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;font-weight:600;font-size:14px;transition:.15s}
+.btn:hover{transform:translateY(-1px)}.red{background:var(--red);color:#fff}.dark{background:var(--green);color:#fff}.white{background:#fff;color:var(--ink)}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:10px}
+.topbar{background:var(--green);color:#e8e2cf;text-align:center;font-size:12px;padding:8px}
+header{position:sticky;top:0;z-index:30;background:var(--cream);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-size:20px;font-weight:600}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-style:normal;font-size:16px}
+.links{display:flex;gap:28px;font-size:14px;font-weight:500}.links a:hover{color:var(--red)}
+.burger{display:none;font-size:24px}
+.badge{background:#fff;color:var(--red);border-radius:99px;padding:0 8px;font-size:12px}
+.hero{display:grid;grid-template-columns:1fr 1fr;background:var(--yellow)}
+.hero .l{padding:64px 48px 64px max(24px,calc((100vw - 1200px)/2 + 24px))}
+.hero h1{font-size:clamp(44px,6vw,76px);margin:14px 0 22px}
+.hero p{max-width:420px;margin-bottom:26px}.row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .r{background:linear-gradient(135deg,#c9371f,#e8782e 55%,#7a8f3a);display:grid;place-items:center;font-size:150px;min-height:340px;position:relative}
+.hero small a{color:var(--red);font-weight:600}
+.strip{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px;font-size:13px;font-weight:500}
+.strip button{display:flex;gap:8px}.strip button:hover{color:var(--red)}
+section{padding:72px 0}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sh h2{font-size:clamp(30px,4vw,44px)}
+.tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;margin-bottom:34px}
+.tab{padding:14px 22px;border-radius:12px;background:var(--sand);font-size:14px;font-weight:500;white-space:nowrap}
+.tab.on{background:var(--red);color:#fff}
+.search{padding:11px 18px;border:1px solid var(--line);border-radius:99px;background:#fff;min-width:260px;font:inherit;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card .ph{height:150px;display:grid;place-items:center;font-size:72px}
+.card .b{padding:16px 18px 18px}.card h3{font-size:20px;font-family:Fraunces,serif}
+.unit{color:var(--red);font-size:12px;font-weight:600;margin:4px 0}.desc{font-size:13px;color:var(--mute);min-height:40px}
+.cf{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12px;color:var(--mute)}
+.add{color:var(--red);font-weight:600}
+.step{display:inline-flex;align-items:center;gap:10px;background:var(--sand);border-radius:99px;padding:2px}
+.step button{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-weight:700}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:30px}
+.cta{margin-top:30px;background:#e8ecdc;border-radius:14px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px}
+.cta span{color:var(--mute);font-size:13px;display:block}
+.how{background:var(--green);color:#fff}.how .eyebrow{color:var(--yellow)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px}
+.steps b{font-family:Fraunces,serif;font-size:30px;color:var(--yellow);font-weight:500}
+.steps h3{font-size:20px;margin:14px 0 8px;font-family:Inter;font-weight:500}.steps p{font-size:14px;color:#c9d2c6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.pic{border-radius:18px;min-height:420px;display:grid;place-items:center;font-size:140px}
+.two h2{font-size:clamp(34px,4.5vw,52px);margin-bottom:18px}.two ul{list-style:none;padding:0;margin:20px 0 26px}
+.two li{margin:8px 0;font-size:14px}.two li:before{content:"✓ ";color:var(--red);font-weight:700}
+.keke{background:var(--yellow);border-radius:22px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.keke .l{padding:48px}.keke h2{font-size:clamp(32px,4vw,48px);margin:10px 0 14px}
+.keke .pic{border-radius:0;background:#f0b429;font-size:150px}
+.fld{background:#fff;border-radius:12px;padding:6px 14px;margin:20px 0}
+.fld input{width:100%;border:0;border-bottom:1px solid var(--line);padding:11px 0;font:inherit;font-size:14px;outline:0}.fld input:last-child{border:0}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:34px;border-top:1px solid var(--line);padding-top:30px}
+.feat h3{font-family:Inter;font-weight:600;font-size:16px;margin:8px 0}.feat p{font-size:13px;color:var(--mute)}
+.faqs{background:var(--sand)}.faqs .two{align-items:start}
+details{border-bottom:1px solid var(--line);padding:18px 0}summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"–";color:var(--red)}details:not([open]) summary::after{content:"+"}
+details p{font-size:14px;color:var(--mute);margin-top:8px}
+.final{background:var(--red);color:#fff}.final .two{align-items:center}.final h2{font-size:clamp(34px,5vw,56px);margin:0}
+footer{background:var(--green);color:#c9d2c6;padding:52px 0 24px;font-size:13px}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}footer h4{color:var(--yellow);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+footer a,footer button{display:block;margin:7px 0;color:#c9d2c6}footer a:hover,footer button:hover{color:#fff}
+.copy{margin-top:34px;padding-top:18px;border-top:1px solid #3a5042;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.copy em{font-family:Fraunces,serif;color:var(--yellow);font-size:18px}
+.ov{position:fixed;inset:0;background:rgba(20,30,24,.55);display:none;z-index:50;justify-content:center;align-items:center;padding:16px}
+.ov.show{display:flex}.ov.side{justify-content:flex-end;padding:0;align-items:stretch}
+.pn{background:var(--cream);border-radius:18px;padding:26px;width:100%;max-width:480px;max-height:92vh;overflow:auto;position:relative}
+.side .pn{border-radius:0;max-width:440px;max-height:none}
+.pn h2{font-size:28px;margin-bottom:6px}.pn>p{font-size:13px;color:var(--mute);margin-bottom:14px}
+.x{position:absolute;top:14px;right:16px;font-size:26px}
+.pn label{display:block;font-size:12px;font-weight:600;margin:12px 0 4px}
+.pn input,.pn textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:14px;background:#fff}
+.pn .btn{width:100%;justify-content:center;margin-top:18px}
+.li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.li small{color:var(--mute);display:block}.li .rm{color:var(--mute);font-size:18px}
+.cust{display:flex;gap:8px;margin:14px 0 4px}.cust .btn{width:auto;margin:0;padding:10px 16px}
+.err{color:var(--red);font-size:12px;margin-top:6px;min-height:16px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);background:var(--green);color:#fff;padding:12px 22px;border-radius:99px;font-size:14px;z-index:99;transition:.25s;opacity:0}
+.toast.show{transform:translate(-50%,0);opacity:1}
+@media(max-width:860px){.links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 24px;border-bottom:1px solid var(--line)}.links.open{display:flex}.burger{display:block}
+.hero,.two,.keke,.steps,.feat,.fg{grid-template-columns:1fr}.hero .l{padding:44px 24px}.keke .l{padding:30px 24px}.nav .start{display:none}.search{min-width:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="topbar">Your market run, your errands, your ride. One friendly team.</div>
+<header><div class="wrap nav">
+<a href="#top" class="logo"><i>🛒</i>Victory Foods</a>
+<nav class="links" id="links">
+<a href="#shop">Shop groceries</a><a href="#" data-open="errand">Send an errand</a><a href="#" data-open="keke">Book a keke</a><a href="#how">How it works</a></nav>
+<div class="row"><button class="btn red start" data-open="cart">Start an order <span class="badge" data-count>0</span></button><button class="burger" id="burger" aria-label="Menu">☰</button></div>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="l">
+<div class="eyebrow">Your neighbourhood, delivered</div>
+<h1>Good food.<br>Less wahala.</h1>
+<p>Tomatoes, yam, rice, fresh fish and more, straight from the market to your door. You plan the meal. We'll do the market run.</p>
+<div class="row"><a href="#shop" class="btn red">Shop groceries ↗</a><button class="btn" data-open="cart">Send your list ☰</button></div>
+<small style="display:block;margin-top:22px">Need something else? <a href="#" data-open="errand">Send an errand ↗</a> &nbsp; <a href="#" data-open="keke">Book a keke ↗</a></small>
+</div><div class="r">🍅🥬</div></div>
+
+<div class="wrap strip"><button data-go="#shop">🧺 Groceries for your everyday ↗</button><button data-open="errand">🚲 A rider for your to-do list ↗</button><button data-open="keke">📍 A keke when you need one ↗</button></div>
+
+<section id="shop" style="padding-top:40px"><div class="wrap">
+<div class="sh"><h2 style="font-size:22px;font-family:Inter;font-weight:600">What's on your shopping list?</h2><a href="#shop" class="add">Explore the market ↗</a></div>
+<div class="tabs" id="tabs"></div>
+<div class="eyebrow">Fill your kitchen</div>
+<div class="sh"><h2>Everyday food. Plenty of possibility.</h2><input class="search" id="q" placeholder="Search tomatoes, yam, rice..." aria-label="Search"></div>
+<p style="color:var(--mute);font-size:14px;margin:-10px 0 24px">Pick your essentials and tell us how much you need. We'll confirm availability, current prices and delivery before you go ahead.</p>
+<div class="grid" id="grid"></div>
+<div class="cta"><div><b>Your list doesn't have to end here.</b><span>Can't find an item? Tell the team what you need.</span></div><button class="btn white" data-open="cart">Send my shopping list ↗</button></div>
+</div></section>
+
+<section class="how" id="how"><div class="wrap">
+<div class="eyebrow">From your list to your door</div>
+<div class="sh"><h2>A market run, minus the running.</h2><span style="font-size:13px;color:#c9d2c6;max-width:220px">No need to know every detail. Start with what you need.</span></div>
+<div class="steps">
+<div><b>01</b><h3>Make it your list</h3><p>Browse groceries or send your own list. Include quantities, preferences and anything else we should know.</p></div>
+<div><b>02</b><h3>Let's confirm the details</h3><p>Share your location. The team confirms what's available, the total cost and delivery arrangements with you.</p></div>
+<div><b>03</b><h3>We bring it to you</h3><p>Once you give the go-ahead, we get your order ready and arrange a rider. You get on with your day.</p></div>
+</div></div></section>
+
+<section><div class="wrap two">
+<div class="pic" style="background:#e8d3a6">🧑🏾‍🦱🛍️</div>
+<div><div class="eyebrow">More than groceries</div><h2>If you need it,<br>let's go get it.</h2>
+<p style="color:var(--mute);font-size:15px">The day is full enough. Tell the Victory Foods team what you need and our riders will help you get it. A quick market top-up, a household essential or a pickup you can't make.</p>
+<ul><li>Something missing from your kitchen</li><li>An everyday item from a nearby shop</li><li>A pickup to save you the trip</li></ul>
+<button class="btn red" data-open="errand">Tell us your errand ↗</button>
+<p style="font-size:12px;color:var(--mute);margin-top:16px">Share the item, pickup details and destination. We'll confirm what's possible and the cost before setting off.</p></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="keke"><div class="l">
+<div class="eyebrow">Going somewhere?</div><h2>Need a keke somewhere? We'll send one.</h2>
+<p style="font-size:14px">To the market, to a visit, or just across the neighbourhood. Tell us where you are and where you're headed. We'll arrange your ride.</p>
+<div class="fld"><input id="kp" placeholder="Where should we pick you up?"><input id="kd" placeholder="Where are you going?"></div>
+<div class="row"><button class="btn red" id="kbtn">Request a keke ↗</button><small style="font-size:11px;max-width:150px">Confirm the fare and pickup arrangements with the team.</small></div>
+</div><div class="pic">🛺</div></div>
+
+<div style="margin-top:70px"><div class="eyebrow">The Victory Foods way</div>
+<div class="sh"><h2 style="font-size:clamp(28px,4vw,40px)">A familiar face. A little less stress.</h2><span style="font-size:13px;color:var(--mute)">Everyday help should feel simple, personal and clear.</span></div>
+<div class="feat"><div>✅<h3>Your list, your way</h3><p>A bowl, a tuber or enough for the whole house. Tell us the quantities and preferences that work for your kitchen.</p></div>
+<div>💬<h3>Details before dispatch</h3><p>Agree on the items, cost and delivery arrangements with the team before your order or errand goes ahead.</p></div>
+<div>💚<h3>People you can talk to</h3><p>Not sure what to ask for? Need to explain a pickup? Start a conversation with the Victory Foods team.</p></div></div></div>
+</div></section>
+
+<section class="faqs" id="faq"><div class="wrap two">
+<div><div class="eyebrow">Good to know</div><h2>A few answers before you start.</h2><p style="color:var(--mute);font-size:14px;margin:14px 0 20px">Every list and every trip is a little different. We're here to help with yours.</p><button class="btn white" data-open="chat">Ask the team 💬</button></div>
+<div>
+<details><summary>How do I place a grocery order?</summary><p>Choose items from the market or send your shopping list to the team. Include quantities and your delivery location so we can confirm the details.</p></details>
+<details><summary>Do you deliver to my area?</summary><p>Share your neighbourhood and a nearby landmark with the team. We'll check delivery or pickup availability for your location before your order.</p></details>
+<details><summary>How much will my order and delivery cost?</summary><p>Food prices depend on the items and quantities you choose. Ask for current prices; the team will confirm the order total and delivery fee before you go ahead.</p></details>
+<details><summary>What if something on my list isn't available?</summary><p>We'll discuss available options with you. Let us know which items can be substituted and which ones you'd rather leave out.</p></details>
+<details><summary>Can I request an errand or a keke without buying food?</summary><p>Yes. Send your errand details, or share your pickup point and destination for a keke. The team will confirm availability and cost with you.</p></details>
+</div></div></section>
+
+<section class="final"><div class="wrap two"><div><div class="eyebrow" style="color:#ffd9cf">Good food starts with a list</div><h2>What's cooking?<br>We'll get the ingredients.</h2></div>
+<div><p style="margin-bottom:16px">A few essentials or the whole week's shopping. Start with Victory Foods.</p><div class="row"><a href="#shop" class="btn white">Shop groceries ↗</a><button class="btn dark" data-open="cart">Send my list ☰</button></div><small style="display:block;margin-top:14px;font-size:12px">Need a rider or a keke instead? Just tell the team.</small></div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+<div><div class="logo" style="color:#fff;margin-bottom:12px"><i>🛒</i>Victory Foods</div>Your everyday groceries, helpful errand riders and a keke when you need one. A little less running around.</div>
+<div><h4>The market</h4><a href="#shop" data-cat="Vegetables">Vegetables</a><a href="#shop" data-cat="Roots & tubers">Roots & tubers</a><a href="#shop" data-cat="Rice & grains">Rice & grains</a><a href="#shop" data-cat="Fish & seafood">Fish & seafood</a></div>
+<div><h4>A little help</h4><button data-open="cart">Send your shopping list</button><button data-open="errand">Send an errand</button><button data-open="keke">Request a keke</button><a href="#how">How it works</a></div>
+<div><h4>Let's talk</h4><p>Share your location to check delivery, errands or ride availability.</p><button data-open="chat" style="color:#fff;font-weight:600">Talk to Victory Foods ↗</button></div>
+</div><div class="copy"><span>© <span id="yr"></span> Victory Foods. All rights reserved.</span><em>Good food. Less wahala.</em><span>Orders and rides subject to confirmation.</span></div></div></footer>
+
+<div class="ov side" id="cart"><div class="pn"><button class="x" data-close>×</button>
+<h2>Your shopping list</h2><p>Add items, set quantities, then send it to the team. We'll confirm prices and delivery.</p>
+<div id="items"></div>
+<div class="cust"><input id="cn" placeholder="Add another item (e.g. 2 bunches ugu)"><button class="btn dark" id="ca">Add</button></div>
+<form id="cform" novalidate>
+<label>Your name</label><input name="name" required><label>Phone number</label><input name="phone" type="tel" required>
+<label>Delivery location / landmark</label><input name="addr" required><label>Notes (substitutions, budget, timing)</label><textarea name="notes" rows="2"></textarea>
+<div class="err" id="cerr"></div><button class="btn red" type="submit">Send my list on WhatsApp ↗</button></form></div></div>
+
+<div class="ov" id="form"><div class="pn"><button class="x" data-close>×</button><h2 id="ft"></h2><p id="fd"></p><form id="gf" novalidate><div id="ff"></div><div class="err" id="gerr"></div><button class="btn red" type="submit">Send on WhatsApp ↗</button></form></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== EDIT THESE ===== */
+const CONFIG={whatsapp:"2348144411114",phoneDisplay:"+234 000 000 0000"}; // country code + number, no + or spaces
+/* ====================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const CATS=["All groceries","Vegetables","Roots & tubers","Rice & grains","Fish & seafood","More essentials"];
+const P=[
+["Fresh tomatoes","Vegetables","By the bowl","For stew, sauce & everything between","🍅","#fbe0d8"],
+["Fresh peppers","Vegetables","By the bowl","Bring a little heat to the table","🌶️","#fbe6c8"],
+["Onions","Vegetables","By the bowl","A kitchen staple, always on the list","🧅","#eadcf0"],
+["Ugu (pumpkin leaf)","Vegetables","By the bunch","Fresh green leaves for soups","🥬","#dcefd3"],
+["Yam","Roots & tubers","By the tuber","Boil it. Fry it. Pound it.","🍠","#f1e2c6"],
+["Sweet potatoes","Roots & tubers","By the bowl","Roast, boil or fry","🥔","#f6dcc3"],
+["Rice","Rice & grains","By your preferred measure","The start of a very good pot","🍚","#f3ecd9"],
+["Beans","Rice & grains","By the derica","Honey beans or brown, you choose","🫘","#ecd9c4"],
+["Fresh fish","Fish & seafood","Tell us your preferred size","A delicious reason to get cooking","🐟","#d9e8f1"],
+["Crayfish","Fish & seafood","By the cup","Deep flavour for soups and stews","🦐","#f9ddd0"],
+["Palm oil","More essentials","By the litre","Rich, red and ready","🛢️","#f8d9b0"],
+["Eggs","More essentials","By the crate","Breakfast, sorted","🥚","#f7edd0"]];
+let list=JSON.parse(localStorage.getItem("vf-list")||"[]"),cat="All groceries",tm;
+const save=()=>{try{localStorage.setItem("vf-list",JSON.stringify(list))}catch(e){}};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tm);tm=setTimeout(()=>t.classList.remove("show"),2400)};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function tabs(){$("#tabs").innerHTML=CATS.map(c=>`<button class="tab ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join("")}
+function grid(){const q=$("#q").value.trim().toLowerCase();
+ const r=P.filter(p=>(cat==="All groceries"||p[1]===cat)&&p[0].toLowerCase().includes(q));
+ $("#grid").innerHTML=r.map(p=>{const it=list.find(i=>i.name===p[0]);
+ return `<div class="card"><div class="ph" style="background:${p[5]}">${p[4]}</div><div class="b"><h3>${p[0]}</h3><div class="unit">${p[2]}</div><div class="desc">${p[3]}</div>
+ <div class="cf"><span>Ask for today's price</span>${it?`<span class="step"><button data-m="${esc(p[0])}">−</button><b>${it.qty}</b><button data-p="${esc(p[0])}">+</button></span>`:`<button class="add" data-a="${esc(p[0])}">Add to list</button>`}</div></div></div>`}).join("")||`<div class="empty">Nothing matched. <button class="add" data-open="cart">Add it to your list yourself ↗</button></div>`}
+function cart(){const n=list.reduce((a,i)=>a+i.qty,0);$$("[data-count]").forEach(e=>e.textContent=n);
+ $("#items").innerHTML=list.length?list.map((i,x)=>`<div class="li"><div>${esc(i.name)}<small>${esc(i.unit||"")}</small></div><span class="row" style="gap:8px"><span class="step"><button data-m2="${x}">−</button><b>${i.qty}</b><button data-p2="${x}">+</button></span><button class="rm" data-r="${x}" aria-label="Remove">×</button></span></div>`).join(""):`<p style="font-size:14px;color:var(--mute);padding:14px 0">Your list is empty. Add items from the market or type your own below.</p>`;
+ save();}
+const add=(n,u)=>{const i=list.find(i=>i.name===n);i?i.qty++:list.push({name:n,unit:u||"",qty:1});cart();grid()};
+const unitOf=n=>(P.find(p=>p[0]===n)||[])[2];
+
+const wa=text=>{window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`,"_blank","noopener")};
+const open=id=>{$("#"+id).classList.add("show");document.body.style.overflow="hidden"};
+const close=()=>{$$(".ov").forEach(o=>o.classList.remove("show"));document.body.style.overflow=""};
+
+const FORMS={
+errand:{t:"Send an errand",d:"Tell us what you need. We'll confirm what's possible and the cost before setting off.",f:[["what","What do you need us to get or do?","textarea",1],["pickup","Pickup details (shop / place)","text",1],["dest","Destination","text",1],["name","Your name","text",1],["phone","Phone number","tel",1]],m:v=>`*Victory Foods – Errand request*\nWhat: ${v.what}\nPickup: ${v.pickup}\nDestination: ${v.dest}\nName: ${v.name}\nPhone: ${v.phone}`},
+keke:{t:"Book a keke",d:"Tell us where you are and where you're headed. We'll arrange your ride and confirm the fare.",f:[["pickup","Where should we pick you up?","text",1],["dest","Where are you going?","text",1],["when","When? (e.g. now, 4pm)","text",0],["name","Your name","text",1],["phone","Phone number","tel",1]],m:v=>`*Victory Foods – Keke request*\nPickup: ${v.pickup}\nDestination: ${v.dest}\nWhen: ${v.when||"As soon as possible"}\nName: ${v.name}\nPhone: ${v.phone}`},
+chat:{t:"Talk to Victory Foods",d:"Ask us anything about delivery, errands or rides.",f:[["name","Your name","text",1],["msg","Your question","textarea",1]],m:v=>`Hi Victory Foods, I'm ${v.name}.\n${v.msg}`}};
+let cur;
+function openForm(k,pre={}){cur=k;const F=FORMS[k];$("#ft").textContent=F.t;$("#fd").textContent=F.d;$("#gerr").textContent="";
+ $("#ff").innerHTML=F.f.map(([id,l,t,r])=>`<label>${l}${r?"":" (optional)"}</label>${t==="textarea"?`<textarea name="${id}" rows="3"></textarea>`:`<input name="${id}" type="${t}" value="${esc(pre[id]||"")}">`}`).join("");
+ open("form")}
+
+document.addEventListener("click",e=>{
+ const t=e.target.closest("button,a");if(!t)return;const d=t.dataset;
+ if(d.open){e.preventDefault();$("#links").classList.remove("open");d.open==="cart"?(cart(),open("cart")):openForm(d.open)}
+ else if(d.go){$(d.go).scrollIntoView()}
+ else if(d.cat){cat=d.cat;tabs();grid()}
+ else if("close"in d||t.classList.contains("ov"))close();
+ else if(d.c){cat=d.c;tabs();grid()}
+ else if(d.a){add(d.a,unitOf(d.a));toast(d.a+" added to your list")}
+ else if(d.p)add(d.p,unitOf(d.p));
+ else if(d.m){const i=list.find(i=>i.name===d.m);if(i&&--i.qty<1)list=list.filter(x=>x!==i);cart();grid()}
+ else if(d.p2){list[d.p2].qty++;cart();grid()}
+ else if(d.m2){if(--list[d.m2].qty<1)list.splice(d.m2,1);cart();grid()}
+ else if(d.r){list.splice(d.r,1);cart();grid()}
+});
+$$(".ov").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)close()}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+$("#burger").onclick=()=>$("#links").classList.toggle("open");
+$("#links").addEventListener("click",()=>$("#links").classList.remove("open"));
+$("#q").oninput=grid;
+$("#ca").onclick=()=>{const v=$("#cn").value.trim();if(!v)return;add(v,"Custom item");$("#cn").value=""};
+$("#cn").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();$("#ca").click()}};
+$("#kbtn").onclick=()=>openForm("keke",{pickup:$("#kp").value,dest:$("#kd").value});
+
+$("#cform").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),v=Object.fromEntries(f);
+ const er=$("#cerr");
+ if(!list.length)return er.textContent="Add at least one item to your list.";
+ if(!v.name.trim()||!v.phone.trim()||!v.addr.trim())return er.textContent="Please fill in your name, phone and delivery location.";
+ if(!/^[+\d][\d\s-]{6,}$/.test(v.phone.trim()))return er.textContent="Enter a valid phone number.";
+ er.textContent="";
+ wa(`*Victory Foods – Shopping list*\n${list.map(i=>`• ${i.qty} × ${i.name}${i.unit&&i.unit!=="Custom item"?" ("+i.unit+")":""}`).join("\n")}\n\nName: ${v.name}\nPhone: ${v.phone}\nDelivery: ${v.addr}${v.notes?"\nNotes: "+v.notes:""}\n\nPlease confirm availability, total and delivery.`);
+ toast("Opening WhatsApp to send your list…");};
+$("#gf").onsubmit=e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.target));
+ const miss=FORMS[cur].f.find(([id,,,r])=>r&&!(v[id]||"").trim());
+ if(miss)return $("#gerr").textContent="Please fill in: "+miss[1];
+ const ph=FORMS[cur].f.find(f=>f[0]==="phone");if(ph&&!/^[+\d][\d\s-]{6,}$/.test(v.phone.trim()))return $("#gerr").textContent="Enter a valid phone number.";
+ wa(FORMS[cur].m(v));close();toast("Opening WhatsApp…");};
+
+$("#yr").textContent=new Date().getFullYear();
+tabs();grid();cart();
+</script>
+</body>
+</html>
